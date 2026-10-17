@@ -1,38 +1,35 @@
 # RSS агрегатор
 
 [![hexlet-check](https://github.com/kicha3007-boop/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kicha3007-boop/frontend-project-11/actions)
+[![CI](https://github.com/kicha3007-boop/frontend-project-11/actions/workflows/main.yml/badge.svg)](https://github.com/kicha3007-boop/frontend-project-11/actions/workflows/main.yml)
 
-После проекта вы сможете уверенно работать с DOM, Vite, Tailwind CSS, AJAX, валидациями и деплоить проект
+Сервис для чтения RSS-лент: добавляете ссылку на RSS, приложение показывает фиды и посты, раз в 5 секунд
+проверяет ленты и добавляет новые посты. Пост можно открыть в модальном окне — тогда он помечается
+прочитанным.
 
 Учебный проект Хекслета: https://ru.hexlet.io/programs/frontend
-Как это должно работать: https://files.hexlet.app/a/n1wvjd
 
 ## Стек
 
-- JavaScript
+Vite, Tailwind CSS, Valtio (состояние для слоя представления), yup (валидация), i18next (тексты),
+axios. Ленты загружаются через прокси [All Origins](https://github.com/Hexlet/hexlet-allorigins).
+Приложение построено по MVC: модель — состояние Valtio, представление — `src/view.js`,
+контроллеры — обработчики в `src/app.js`; парсер RSS — чистая функция `src/parser.js`.
 
-## Установка
+## Требования
 
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
+- Node.js 22 или новее
+- npm, make
+
+## Установка и запуск
 
 ```bash
 git clone https://github.com/kicha3007-boop/frontend-project-11.git
 cd frontend-project-11
+make install
+make develop   # dev-сервер Vite
+make build     # сборка в dist/
+make lint      # oxlint + проверка форматирования oxfmt
 ```
 
-## Использование
-
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
-
----
-
-<details>
-<summary>Автоматические тесты Хекслета</summary>
-
-Тесты запускаются на каждый коммит. За запуск отвечает файл `.github/workflows/hexlet-check.yml` — не удаляйте и не переименовывайте ни его, ни репозиторий.
-
-</details>
-
-## О Хекслете
-
-[Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.
+Пример ленты: https://lorem-rss.hexlet.app/feed

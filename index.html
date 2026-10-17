@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSS агрегатор</title>
+  </head>
+  <body class="min-h-screen bg-gray-50 text-gray-900">
+    <main class="flex flex-col">
+      <section class="bg-gray-800 text-white">
+        <div class="mx-auto max-w-3xl px-4 py-12">
+          <h1 class="text-4xl font-semibold" data-i18n="title"></h1>
+          <p class="mt-2 text-lg text-gray-300" data-i18n="lead"></p>
+          <form class="rss-form mt-6 flex flex-col gap-3 sm:flex-row sm:items-end" novalidate>
+            <div class="flex grow flex-col gap-1">
+              <label for="url-input" class="text-sm text-gray-300" data-i18n="form.label"></label>
+              <input
+                id="url-input"
+                name="url"
+                type="text"
+                autocomplete="off"
+                autofocus
+                required
+                class="w-full rounded border-gray-300 px-3 py-2 text-gray-900"
+              />
+            </div>
+            <button
+              type="submit"
+              class="rounded bg-blue-600 px-6 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              data-i18n="form.submit"
+            ></button>
+          </form>
+          <p class="mt-1 text-sm text-gray-400" data-i18n="form.example"></p>
+          <p class="feedback mt-2 text-sm" role="status"></p>
+        </div>
+      </section>
+      <section class="mx-auto grid w-full max-w-5xl gap-8 px-4 py-8 md:grid-cols-3">
+        <div class="posts md:col-span-2"></div>
+        <div class="feeds"></div>
+      </section>
+    </main>
+    <dialog class="modal w-full max-w-lg rounded-lg p-0 shadow-xl backdrop:bg-black/50">
+      <div class="flex flex-col gap-4 p-6">
+        <h2 class="modal-title text-xl font-semibold"></h2>
+        <div class="modal-body text-gray-700" data-test="modal-body"></div>
+        <div class="flex justify-end gap-2">
+          <a
+            class="full-article rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="modal.readFull"
+          ></a>
+          <form method="dialog">
+            <button type="submit" class="rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-600" data-i18n="modal.close"></button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
